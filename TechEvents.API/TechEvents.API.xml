@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TechEvents.API</name>
+    </assembly>
+    <members>
+        <member name="M:TechEvents.API.Controllers.TechEventController.GetTechEventsAsync">
+            <summary>
+            Retrieve all tech events.
+            </summary>
+            <returns>returns tech event details.</returns>
+        </member>
+        <member name="M:TechEvents.API.Controllers.TechEventController.GetTechEventAsync(System.Int32)">
+            <summary>
+            Retrieve a tech event by Id.
+            </summary>
+            <returns>returns tech event details.</returns>
+        </member>
+        <member name="M:TechEvents.API.Controllers.TechEventController.AddTechEventAsync(TechEvents.API.Domain.NewTechEventRequest)">
+            <summary>
+            Create new tech event.
+            </summary>
+            <returns>returns tech event details.</returns>
+        </member>
+        <member name="M:TechEvents.API.Controllers.TechEventController.UpdateEventbyIdAsync(TechEvents.API.Infrastructure.Repositories.TechEventInfo)">
+            <summary>
+            Update a tech event.
+            </summary>
+            <returns>returns tech event details.</returns>
+        </member>
+        <member name="M:TechEvents.API.Controllers.TechEventController.DeleteTechEventByIDAsync(System.Int32)">
+            <summary>
+            Delete a tech event by id.
+            </summary>
+            <returns>returns tech event details.</returns>
+        </member>
+        <member name="T:TechEvents.API.Infrastructure.Repositories.TechEventRepository">
+            <summary>
+            TechEventRepository.
+            </summary>
+        </member>
+        <member name="F:TechEvents.API.Infrastructure.Repositories.TechEventRepository._context">
+            <summary>
+            The _context.
+            </summary>
+        </member>
+    </members>
+</doc>
