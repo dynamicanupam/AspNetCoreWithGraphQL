@@ -1,6 +1,7 @@
 ﻿using GraphiQl;
 using GraphQL.API.GraphqlCore;
-using GraphQL.Server.Transports.AspNetCore;
+using GraphQL.API.Infrastructure.DBContext;
+using GraphQL.API.Infrastructure.Repositories;
 using GraphQL.Server.Ui.Playground;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TechEvents.API.Infrastructure.Repositories;
 
 namespace GraphQL.API
 {
@@ -26,11 +26,12 @@ namespace GraphQL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<ApplicationDbContext>(context => { context.UseInMemoryDatabase("GraphQLDB"); });
+            services.AddDbContext<TechEventDBContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("GraphQLDBConnection")));
 
             services.AddTransient<ITechEventRepository, TechEventRepository>();
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-
+                
             services.AddSingleton<TechEventInfoType>();
             services.AddSingleton<ParticipantType>();
             services.AddSingleton<TechEventQuery>();
@@ -39,10 +40,7 @@ namespace GraphQL.API
 
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(new TechEventSchema(new FuncDependencyResolver(type => sp.GetService(type))));
-            //services.AddSingleton<IDependencyResolver>(c => new FuncDependencyResolver(type => c.GetRequiredService(type)));
-
-            //services.AddGraphQL(o => { o.ExposeExceptions = false; })
-            //    .AddGraphTypes(ServiceLifetime.Scoped);
+   
         }
 
 

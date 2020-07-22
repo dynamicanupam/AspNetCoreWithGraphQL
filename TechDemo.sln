@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechEvents.API", "TechEvents.API\TechEvents.API.csproj", "{461C2C6F-59BA-4059-9395-85E6B013C79A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.API", "GraphQL.API\GraphQL.API.csproj", "{B650B811-8BE5-4B88-B553-DD7ED5B7253A}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{461C2C6F-59BA-4059-9395-85E6B013C79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{461C2C6F-59BA-4059-9395-85E6B013C79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{461C2C6F-59BA-4059-9395-85E6B013C79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{461C2C6F-59BA-4059-9395-85E6B013C79A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B650B811-8BE5-4B88-B553-DD7ED5B7253A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B650B811-8BE5-4B88-B553-DD7ED5B7253A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B650B811-8BE5-4B88-B553-DD7ED5B7253A}.Release|Any CPU.ActiveCfg = Release|Any CPU

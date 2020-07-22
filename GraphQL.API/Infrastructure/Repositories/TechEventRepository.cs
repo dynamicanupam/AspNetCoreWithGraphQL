@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GraphQL.API.Infrastructure.DBContext;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TechEvents.API.Domain;
+using GraphQL.API.Domain;
 
-namespace TechEvents.API.Infrastructure.Repositories
+
+namespace GraphQL.API.Infrastructure.Repositories
 {
     /// <summary>
     /// TechEventRepository.
@@ -15,16 +18,16 @@ namespace TechEvents.API.Infrastructure.Repositories
         /// <summary>
         /// The _context.
         /// </summary>
-        private readonly ApplicationDbContext _context;
+        private readonly TechEventDBContext _context;
 
-        public TechEventRepository(ApplicationDbContext context)
+        public TechEventRepository(TechEventDBContext context)
         {
             this._context = context;
         }
 
         public async Task<TechEventInfo> AddTechEvent(NewTechEventRequest techEvent)
         {
-            var newEvent = new TechEventInfo { EventName = techEvent.EventName, Speaker = techEvent.Speaker };
+            var newEvent = new TechEventInfo { EventName = techEvent.EventName, Speaker = techEvent.Speaker, EventDate = techEvent.EventDate };
             var savedEvent = (await _context.TechEventInfo.AddAsync(newEvent)).Entity;
             await _context.SaveChangesAsync();
 
@@ -38,25 +41,17 @@ namespace TechEvents.API.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<TechEventInfo> GetTechEventById(int id)
+        public async Task<List<Participant>> GetParticipantInfoByEventId(int id)
         {
-            return _context.TechEventInfo.FirstOrDefault(i => i.EventId == id);
+            return await(from ep in this._context.EventParticipants
+                                 join p in this._context.Participant on ep.ParticipantId equals p.ParticipantId
+                                 where ep.EventId == id
+                                 select p).ToListAsync();
         }
 
-        public async Task<TechEventResponse> GetTechEventInfoById(int id)
+        public async Task<TechEventInfo> GetTechEventById(int id)
         {
-            List<Participant> participants = new List<Participant>();
-            var tEvent = _context.TechEventInfo.FirstOrDefault(i => i.EventId == id);
-            if (tEvent  != null)
-            {
-                participants = await (from ep in this._context.EventParticipants
-                                    join p in this._context.Participant on ep.ParticipantId equals p.ParticipantId
-                                    where ep.EventId == tEvent.EventId
-                                    select p).ToListAsync();
-            }
-
-            return new TechEventResponse { EventId = id, EventName = tEvent.EventName, Participants = participants };
-
+            return await Task.FromResult( _context.TechEventInfo.FirstOrDefault(i => i.EventId == id));
         }
 
         public async Task<TechEventInfo[]> GetTechEvents()

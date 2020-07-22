@@ -1,10 +1,6 @@
-﻿using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TechEvents.API.Domain;
-using TechEvents.API.Infrastructure.Repositories;
+﻿using GraphQL.API.Infrastructure.Repositories;
+using GraphQL.Types;
+using GraphQL.API.Domain;
 
 namespace GraphQL.API.GraphqlCore
 {

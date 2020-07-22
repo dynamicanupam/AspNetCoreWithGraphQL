@@ -1,5 +1,6 @@
 ﻿
-using TechEvents.API.Infrastructure.Repositories;
+using GraphQL.API.Infrastructure.DBContext;
+
 
 namespace TechEvents.API.Domain
 {

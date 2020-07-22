@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TechEvents.API.Domain
+namespace GraphQL.API.Domain
 {
     public class NewTechEventRequest
     {
