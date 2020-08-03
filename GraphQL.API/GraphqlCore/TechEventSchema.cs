@@ -14,6 +14,5 @@ namespace GraphQL.API.GraphqlCore
             Mutation = resolver.Resolve<TechEventMutation>();
             DependencyResolver = resolver;
         }
-
     }
 }

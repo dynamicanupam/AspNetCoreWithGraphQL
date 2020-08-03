@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GraphQL.API.GraphqlCore
 {
-    public class AddEventInputType : InputObjectGraphType
+    public class TechEventInputType : InputObjectGraphType
     {
-        public AddEventInputType()
+        public TechEventInputType()
         {
             Name = "AddEventInput";
             Field<NonNullGraphType<StringGraphType>>("eventName");

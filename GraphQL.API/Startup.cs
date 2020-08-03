@@ -35,7 +35,7 @@ namespace GraphQL.API
             services.AddSingleton<TechEventInfoType>();
             services.AddSingleton<ParticipantType>();
             services.AddSingleton<TechEventQuery>();
-            services.AddSingleton<AddEventInputType>();
+            services.AddSingleton<TechEventInputType>();
             services.AddSingleton<TechEventMutation>();
 
             var sp = services.BuildServiceProvider();

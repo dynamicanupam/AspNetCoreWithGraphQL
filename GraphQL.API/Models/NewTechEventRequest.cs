@@ -1,16 +1,12 @@
 ﻿
 using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace GraphQL.API.Domain
+namespace GraphQL.API.Models
 {
     public class NewTechEventRequest
     {
-        [Required]
         public string EventName { get; set; }
-
         public string Speaker { get; set; }
-
         public DateTime EventDate { get; set; }
     }
 }

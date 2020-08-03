@@ -13,12 +13,12 @@ namespace GraphQL.API.GraphqlCore
             Field<TechEventInfoType>(
                "event",
                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "eventId" }),
-               resolve: context => repository.GetTechEventById(context.GetArgument<int>("eventId"))
+               resolve: context => repository.GetTechEventByIdAsync(context.GetArgument<int>("eventId"))
             );
 
             Field<ListGraphType<TechEventInfoType>>(
              "events",
-             resolve: context => repository.GetTechEvents()
+             resolve: context => repository.GetTechEventsAsync()
           );
         }
     }

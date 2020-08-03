@@ -16,7 +16,7 @@ namespace GraphQL.API.GraphqlCore
             Field<ListGraphType<ParticipantType>>(
               "participants",
               arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "eventId" }),
-              resolve: context => repository.GetParticipantInfoByEventId(context.Source.EventId)
+              resolve: context => repository.GetParticipantInfoByEventIdAsync(context.Source.EventId)
            );
         }
     }
